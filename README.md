@@ -73,17 +73,22 @@ python experiment/script/invent_constitutive_bilevel.py --llm openai-gpt-4.1-min
 
 ### Intrinsic Dynamics Rendering
 
+After intrinsic dynamics inference is completed, you may render image sequences using the inferred intrinsic dynamics by running the following command:
 ```bash
 export PYTHONPATH=$(pwd):$PYTHONPATH
-# Replace {model_dir} with the directory containing `physics.py` and `ckpt` directory
+# Replace {model_dir} with the directory containing `physics.py` and the `ckpt` directory
 python experiment/entry/vision/elastoplasticity/forward.py --config experiment/configs/finetune-bb.yaml --model_dir {model_dir}
 ```
 
+For convenience, we also provide several inferred intrinsic dynamics examples [here](https://1drv.ms/f/c/9a797b44cb7a4d76/IgDvWoVxuww5TbyuGFbTJo7-AWffYrrHQCz17jB8z0EYG7I?e=B2hfd8), which can be directly used for fast image-sequence rendering.
+
+
+
 ## Acknowledgements
 
-This codebase is built upon [NeuMA](https://github.com/XJay18/NeuMA) and [SGA](https://github.com/PingchuanMa/SGA). We sincerely thank the authors for their excellent work and for making their repositories publicly available.
+This codebase is built upon [NeuMA](https://github.com/XJay18/NeuMA) and [SGA](https://github.com/PingchuanMa/SGA). We thank the authors for their great work and open-source contributions.
 
-For questions or discussions about this project, please contact Jiajing Lin at [jiajinglin@stu.xmu.edu.cn](mailto:jiajinglin@stu.xmu.edu.cn).
+If you have any questions or would like to discuss this project, please feel free to contact Jiajing Lin at [jiajinglin@stu.xmu.edu.cn](mailto:jiajinglin@stu.xmu.edu.cn).
 
 ## Citation
 
