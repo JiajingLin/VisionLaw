@@ -1,0 +1,99 @@
+overwrite: true
+
+llm:
+  elasticity:
+    num_exploit: 2
+    num_explore: 4
+    temperature_exploit: 0.5
+    temperature_explore: 1.0
+    batch_size: 3  
+  plasticity:
+    num_exploit: 2
+    num_explore: 4
+    temperature_exploit: 0.5
+    temperature_explore: 1.0
+    batch_size: 3  
+  elastoplasticity:
+    num_exploit: 6
+    num_explore: 12
+    temperature_exploit: 0.5
+    temperature_explore: 1.0
+    batch_size: 5  
+
+gaussians:
+  sh_degree: 3
+  opacity_thres: 0.02
+  kernels_path: path/to/assets/claycat/kernels.ply    # Replace this with the path to the reconstructed Gaussian kernels
+
+physics:
+  sim:
+    substeps: 1  
+    nframes: 400  
+    skip_frames: 1
+
+    gravity:
+      - 0.0
+      - -9.8
+      - 0.0
+    bc: noslip
+    num_grids: 32
+    dt: 0.0005
+    bound: 1
+    eps: 6e-7
+
+
+particles:
+  shape:
+    pcd_name: claycat/particles
+    asset_root: path/to/assets
+    sort: null
+    ori_bounds:
+    - [-0.5, 0., -0.5]
+    - [0.5, 1., 0.5]
+    sim_bounds:
+    - [0., 0., 0.]
+    - [1., 1., 1.]
+  rho: 1000.0                     
+  clip_bound: 0.1                 
+  mesh_path: path/to/assets/bouncyball/mesh.ply    # Replace this with the path to the reconstructed mesh
+  mesh_sample_mode: volumetric    
+  mesh_sample_resolution: 50      # For sampling from the mesh, larger values will result in more particles
+
+dataset:
+  eval: false
+  camera_type: NeuMASynthetic
+  device: cuda:0
+  data:
+    path: path/to/data/ClayCat               # Replace this with the path to the dataset folder
+    transformsfile: data_dynamic.json
+    white_background: true
+    exclude_steps:
+    - -1
+    used_views: 
+    - d_0
+    init_path: experiment/ckpt/cc/init.pt
+    nframes: 400     
+    skip_frames: 5   
+  camera:
+    resolution: 1
+    data_device: cuda:0
+
+loss:
+  pixel_loss: l2
+  decay_init: 0.5
+  decay_final: 1.0
+  lambda_max_decay: 0.33
+  decay_steps: 25
+
+  use_ssim: true
+  use_flow: false
+
+optim:
+  upper:
+    alternate_epochs: 2   # 2 * 2
+    joint_epochs: 3
+  lower: 
+    num_epochs: 10
+    lr: 0.03
+    frames_per_stage: 10
+    steps_per_frame: 5  
