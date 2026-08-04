@@ -95,11 +95,13 @@ If you have any questions or would like to discuss this project, please feel fre
 Please consider citing our paper if you find it interesting or helpful to your research.
 
 ```tex
-@article{lin2025visionlaw,
-  title={VisionLaw: Inferring Interpretable Intrinsic Dynamics from Visual Observations via Bilevel Optimization},
+@inproceedings{lin2026visionlaw,
+  title={Visionlaw: Inferring interpretable intrinsic dynamics from visual observations via bilevel optimization},
   author={Lin, Jiajing and Jiang, Shu and Zeng, Qingyuan and Wang, Zhenzhong and Jiang, Min},
-  journal={arXiv preprint arXiv:2508.13792},
-  year={2025}
+  booktitle={International Conference on Learning Representations},
+  volume={2026},
+  pages={96128--96165},
+  year={2026}
 }
 ```
 
